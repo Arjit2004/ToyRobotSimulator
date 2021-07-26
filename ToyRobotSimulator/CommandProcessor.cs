@@ -15,6 +15,9 @@ namespace ToyRobotSimulator
         public int Y { get => _y; set => _y = value; }
         public Directions Direction { get => _direction; set => _direction = value; }
 
+        /// <summary>
+        /// To accept, process and action the commands given by the user.
+        /// </summary>
         public void ProcessCommand()
         {
             Console.WriteLine("Please enter your commands for the toy robot:");            
@@ -68,6 +71,11 @@ namespace ToyRobotSimulator
             }
         }
 
+        /// <summary>
+        /// To validate the commands given by the user.
+        /// </summary>
+        /// <param name="command">Command to validate.</param>
+        /// <returns>True, if the command is valid, false otherwise.</returns>
         public bool IsValidCommand(string command)
         {
             var validCommands = new List<string> { "MOVE", "LEFT", "RIGHT", "REPORT" };
@@ -84,6 +92,9 @@ namespace ToyRobotSimulator
             return false;
         }
 
+        /// <summary>
+        /// To move the robot one square ahead, in the direction it is facing towards.
+        /// </summary>
         public void MoveRobot()
         {
             switch (Direction)
@@ -99,6 +110,10 @@ namespace ToyRobotSimulator
             }
         }
 
+        /// <summary>
+        /// To turn the robot to either its left or right side.
+        /// </summary>
+        /// <param name="side">Side, towards which the robot should turn. Left or Right.</param>
         public void TurnRobot(string side)
         {
             switch (Direction)
@@ -118,6 +133,11 @@ namespace ToyRobotSimulator
             }
         }
 
+        /// <summary>
+        /// To verify and place the robot on the board, based on the data provided.
+        /// </summary>
+        /// <param name="command">Place command, containing (x,y) co-ordinated and direction where robot is facing. e.g. PLACE 0,0,NORTH</param>
+        /// <returns>True, if the command is valid and robot is successfully placed, false otherwise.</returns>
         private bool PlaceRobot(string command)
         {
             try
@@ -149,6 +169,9 @@ namespace ToyRobotSimulator
         }
     }
 
+    /// <summary>
+    /// Possible directions, where robot could face.
+    /// </summary>
     public enum Directions
     {
         NORTH,
